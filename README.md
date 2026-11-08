@@ -4,7 +4,7 @@ An interactive, browser-based **3D human anatomy learning project** with:
 
 1. **3D Anatomy** – a full-body procedural 3D model with ~330 clickable meshes across 10 body systems. Click any bone, muscle, organ, vessel or nerve to get its overview, location, function, **micro-level (histology & cell) detail**, clinical relevance and related structures.
 2. **Cell & Micro Explorer** – 7 clickable micro diagrams (animal cell, neuron & synapse, sarcomere, nephron, alveolus, osteon, blood cells). Every organelle or part opens its own explanation.
-3. **Vital Points (Dim Mak)** – 45 traditional vital points (Dim Mak / kyusho / acupuncture points) placed as markers on the 3D body. Each point shows its exact standard location, the anatomy underneath, the medical reason that area is sensitive, the traditional claim, what science actually says, and first-aid relevance.
+3. **Vital Points (Dim Mak)** – 46 traditional vital points (Dim Mak / kyusho / acupuncture points) placed as markers on the 3D body. Each point shows its exact standard location, the anatomy underneath, the medical reason that area is sensitive, the traditional claim, what science actually says, and first-aid relevance.
 
 > **Hinglish:** Yeh project learning ke liye hai. 3D body me kisi bhi structure par click karo, right panel me poori jankari aayegi (Overview, Function, Micro/Cells, Clinical, Relations). “Vital Points” tab me Dim Mak ke saare points body par laal markers ki tarah dikhte hain, har point ka exact location aur uske neeche ki anatomy ke saath.
 
