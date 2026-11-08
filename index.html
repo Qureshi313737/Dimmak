@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anatomy Explorer 3D</title>
+<link rel="stylesheet" href="css/style.css">
+<script type="importmap">
+{
+  "imports": {
+    "three": "./vendor/three/three.module.js",
+    "three/addons/": "./vendor/three/addons/"
+  }
+}
+</script>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="logo" aria-hidden="true">◎</span>
+    <span>Anatomy Explorer 3D</span>
+  </div>
+  <nav class="tabs" role="tablist">
+    <button class="tab active" data-tab="anatomy" role="tab">3D Anatomy</button>
+    <button class="tab" data-tab="cells" role="tab">Cell &amp; Micro Explorer</button>
+    <button class="tab" data-tab="vital" role="tab">Vital Points (Dim Mak)</button>
+  </nav>
+  <button id="themeBtn" class="icon-btn" title="Toggle light / dark">◐</button>
+</header>
+
+<main id="app">
+  <!-- ============ LEFT SIDEBAR ============ -->
+  <aside class="sidebar" id="sidebar">
+    <section class="panel-block" data-show="anatomy">
+      <input id="search" type="search" placeholder="Search structure (e.g. femur, aorta, liver)…" autocomplete="off">
+      <div id="searchResults" class="search-results"></div>
+    </section>
+
+    <section class="panel-block" data-show="anatomy">
+      <h3>Body systems</h3>
+      <div id="systemList" class="system-list"></div>
+    </section>
+
+    <section class="panel-block" data-show="anatomy">
+      <h3>View</h3>
+      <label class="row"><span>Skin mode</span>
+        <select id="skinMode">
+          <option value="xray">X-ray glass</option>
+          <option value="solid">Solid skin</option>
+          <option value="off">Hidden</option>
+        </select>
+      </label>
+      <label class="row"><span>Explode organs</span><input id="explode" type="range" min="0" max="1" step="0.01" value="0"></label>
+      <label class="row"><span>Auto-rotate</span><input id="autoRotate" type="checkbox"></label>
+      <label class="row"><span>Labels on hover</span><input id="hoverLabels" type="checkbox" checked></label>
+      <div class="btn-row">
+        <button id="isolateBtn" disabled>Isolate selected</button>
+        <button id="hideBtn" disabled>Hide selected</button>
+        <button id="resetBtn">Reset view</button>
+      </div>
+      <div class="btn-row views">
+        <button data-view="front">Front</button>
+        <button data-view="back">Back</button>
+        <button data-view="left">Left</button>
+        <button data-view="right">Right</button>
+        <button data-view="head">Head</button>
+        <button data-view="torso">Torso</button>
+      </div>
+    </section>
+
+    <section class="panel-block" data-show="anatomy">
+      <h3>Structures <span id="structCount" class="muted"></span></h3>
+      <div id="tree" class="tree"></div>
+    </section>
+
+    <!-- Cells tab sidebar -->
+    <section class="panel-block" data-show="cells" hidden>
+      <h3>Micro diagrams</h3>
+      <div id="cellList" class="list"></div>
+      <p class="muted small">Har diagram ke andar har part clickable hai. Part par click karo → right panel me detail.</p>
+    </section>
+
+    <!-- Vital points sidebar -->
+    <section class="panel-block" data-show="vital" hidden>
+      <div class="notice">
+        <strong>Educational only.</strong> Dim Mak ("death touch") ek martial-arts legend hai. Yahan har point ka
+        <em>anatomical location</em>, uske neeche ki structures, aur medical reason diya gaya hai ki woh area
+        sensitive kyun hai. Kisi par practice mat karein — head, neck aur chest ki chot medical emergency hoti hai.
+      </div>
+      <input id="vpSearch" type="search" placeholder="Search point (e.g. ST-9, temple)…" autocomplete="off">
+      <div class="chips" id="vpRegions"></div>
+      <div id="vpList" class="list"></div>
+    </section>
+  </aside>
+
+  <!-- ============ CENTER ============ -->
+  <section class="stage" id="stage">
+    <canvas id="viewer"></canvas>
+    <div id="hoverLabel" class="hover-label" hidden></div>
+    <div id="loading" class="loading">Building anatomy…</div>
+    <div class="stage-hint" id="stageHint">Drag = rotate · Right-drag = pan · Scroll = zoom · Click = details · Double-click = focus</div>
+    <div id="cellStage" class="cell-stage" hidden></div>
+  </section>
+
+  <!-- ============ RIGHT INFO PANEL ============ -->
+  <aside class="info" id="info">
+    <div id="infoBody" class="info-body">
+      <div class="empty">
+        <h2>Welcome</h2>
+        <p>3D model me kisi bhi bone, muscle, organ, vessel ya nerve par <strong>click</strong> karo — yahan uski poori jankari aayegi:</p>
+        <ul>
+          <li><b>Overview</b> — kya hai, kahan hai</li>
+          <li><b>Function</b> — kya kaam karta hai</li>
+          <li><b>Micro / Histology</b> — cells aur tissue level detail</li>
+          <li><b>Clinical</b> — common bimariyan / injuries</li>
+          <li><b>Relations</b> — aas-paas ki structures</li>
+        </ul>
+        <p class="muted">Tip: left side ke system toggles se layers on/off karo, “Explode” se organs alag karke dekho.</p>
+      </div>
+    </div>
+  </aside>
+</main>
+
+<button id="menuToggle" class="fab left" aria-label="Open menu">☰</button>
+<button id="infoToggle" class="fab right" aria-label="Open info">ℹ</button>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
