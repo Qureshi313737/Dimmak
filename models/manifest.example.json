@@ -1,0 +1,13 @@
+{
+  "_comment": "Copy to manifest.json and list your own .glb files (e.g. exported from Z-Anatomy / BodyParts3D). See README.",
+  "models": [
+    {
+      "file": "femur_L.glb",
+      "id": "femur",
+      "system": "skeletal",
+      "preset": "bone",
+      "replaces": ["femur"],
+      "transform": { "position": [0, 0, 0], "rotation": [0, 0, 0], "scale": 0.001 }
+    }
+  ]
+}
